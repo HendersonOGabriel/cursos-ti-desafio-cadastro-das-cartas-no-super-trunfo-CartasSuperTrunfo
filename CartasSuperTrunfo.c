@@ -22,7 +22,7 @@ int main() {
     scanf("%s", estado);
 
     printf("Digite o nome da 1ª cidade: ");
-    scanf("%s", cidade);
+    scanf(" %[^\n]", cidade); // "%[^\n]" lê até a quebra de linha (nome com espaços) -- vi no arquivo de um colega aqui no github
 
     printf("Digite o código da cidade: ");
     scanf("%s", codigo);
@@ -46,7 +46,7 @@ int main() {
     scanf("%s", estado2);
 
     printf("Digite o nome da 2ª cidade: ");
-    scanf("%s", cidade2);
+    scanf(" %[^\n]", cidade2);
 
     printf("Digite o código da cidade: ");
     scanf("%s", codigo2);
