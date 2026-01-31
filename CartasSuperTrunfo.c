@@ -13,16 +13,16 @@ int main() {
 
     int populacao, pontosturisticos, populacao2, pontosturisticos2; 
     float area, pib, area2, pib2;
-    char estado[50], cidade[50], estado2[50], cidade2[50], codigo[10], codigo2[10];
+    char estado[50], cidade[50], codigo[10],estado2[50], cidade2[50], codigo2[10];
 
 
-    // requerimentos do usuário para 1ª carta:
+    // requerimentos ao usuário para 1ª carta:
 
     printf("Digite o nome do 1º estado: ");
     scanf("%s", estado);
 
     printf("Digite o nome da 1ª cidade: ");
-    scanf("%s", cidade);
+    scanf(" %[^\n]", cidade); // "%[^\n]" lê até a quebra de linha (nome com espaços) -- vi em um commit de um colega aqui
 
     printf("Digite o código da cidade: ");
     scanf("%s", codigo);
@@ -40,7 +40,7 @@ int main() {
     scanf("%f", &pib);
 
 
-    // requerimentos do usuário para 2ª carta:
+    // requerimentos ao usuário para 2ª carta:
 
     printf("\nDigite o nome do 2º estado: ");
     scanf("%s", estado2);
