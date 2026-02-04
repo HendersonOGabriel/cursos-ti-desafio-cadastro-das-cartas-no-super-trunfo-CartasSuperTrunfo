@@ -22,22 +22,16 @@ int main() {
 
     printf("Digite o nome do 1º estado: ");
     scanf("%s", estado);
-
     printf("Digite o nome da 1ª cidade: ");
     scanf(" %[^\n]", cidade); // "%[^\n]" lê até a quebra de linha (nome com espaços) -- vi no arquivo de um colega aqui no github
-
     printf("Digite o código da cidade: ");
     scanf("%s", codigo);
-
     printf("Digite o número de habitantes: ");
     scanf("%d", &populacao);
-
     printf("Digite o número de pontos turísticos: ");
     scanf("%d", &pontosturisticos);
-
     printf("Digite a área da cidade: ");
     scanf("%f", &area);
-
     printf("Digite o PIB da cidade: ");
     scanf("%ld", &pib);
 
@@ -46,22 +40,16 @@ int main() {
 
     printf("\nDigite o nome do 2º estado: ");
     scanf("%s", estado2);
-
     printf("Digite o nome da 2ª cidade: ");
     scanf(" %[^\n]", cidade2);
-
     printf("Digite o código da cidade: ");
     scanf("%s", codigo2);
-
     printf("Digite o número de habitantes: ");
     scanf("%d", &populacao2);
-
     printf("Digite o número de pontos turísticos: ");
     scanf("%d", &pontosturisticos2);
-
     printf("Digite a área da cidade: ");
     scanf("%f", &area2);
-
     printf("Digite o PIB da cidade:");
     scanf("%ld", &pib2);
 
@@ -69,12 +57,12 @@ int main() {
     // Cálculo de densidade populacional e PIB per capita:
 
     // Carta 1:
-    densidade = populacao / area;
-    pibpercapta = pib / populacao;
+    densidade = (float)populacao / area;
+    pibpercapta = (float)pib / populacao;
 
     // Carta 2:
-    densidade2 = populacao2 / area2;
-    pibpercapta2 = pib2 / populacao2;
+    densidade2 = (float)populacao2 / area2;
+    pibpercapta2 = (float)pib2 / populacao2;
 
 
     // exibição 1ª carta:
