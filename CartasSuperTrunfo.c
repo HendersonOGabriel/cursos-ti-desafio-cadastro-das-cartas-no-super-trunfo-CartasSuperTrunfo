@@ -12,7 +12,7 @@ int main() {
     // Declaração das variáveis para os atributos das cidades
 
     int populacao, pontosturisticos, populacao2, pontosturisticos2;
-    long int pib, pib2;
+    long int pib, pib2, superpoder, superpoder2;
     // mudei o pib, pois o valor do pib é muito grande, e o tipo float não é adequado para armazenar valores tão grandes, pois pode ocorrer perda de precisão. O tipo long int é mais apropriado para armazenar valores inteiros grandes, como o PIB de uma cidade.
     float area, densidade, pibpercapta, area2, densidade2, pibpercapta2;
     char estado[50], cidade[50], estado2[50], cidade2[50], codigo[10], codigo2[10];
@@ -54,15 +54,17 @@ int main() {
     scanf("%ld", &pib2);
 
 
-    // Cálculo de densidade populacional e PIB per capita:
+    // Cálculo de densidade populacional e PIB per capita e Super Poder:
 
     // Carta 1:
     densidade = (float)populacao / area;
     pibpercapta = (float)pib / populacao;
+    superpoder = populacao + pontosturisticos + area + pib + pibpercapta + 1 / densidade;
 
     // Carta 2:
     densidade2 = (float)populacao2 / area2;
     pibpercapta2 = (float)pib2 / populacao2;
+    superpoder2 = populacao2 + pontosturisticos2 + area2 + pib2 + pibpercapta2 + 1 / densidade2;
 
 
     // exibição 1ª carta:
@@ -89,6 +91,23 @@ int main() {
     printf("PIB: R$ %ld\n", pib2);
     printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
     printf("PIB per Capita: R$ %.2f\n", pibpercapta2);
+
+
+    // comparação entre as cartas:
+
+    // variáveis para armazenar as possibilidades de comparação entre as cartas
+   char *cartas[] = {"Carta 1", "Carta 2"};
+   char *ganhador[] = {"Carta 1 vence!", "Carta 2 vence!"};
+
+    // Exibição dos resultados das comparações:
+    printf("\n--- Comparação entre as Cartas ---\n");
+    printf("Comparação de População entre %s e %s: %s", cartas[0], cartas[1], ganhador[populacao < populacao2]);
+    printf("\nComparação de Pontos Turísticos entre %s e %s: %s", cartas[0], cartas[1], ganhador[pontosturisticos < pontosturisticos2]);
+    printf("\nComparação de Área entre %s e %s: %s", cartas[0], cartas[1], ganhador[area < area2]);
+    printf("\nComparação de PIB entre %s e %s: %s\n", cartas[0], cartas[1], ganhador[pib < pib2]);
+    printf("Comparação de Densidade Populacional entre %s e %s: %s", cartas[0], cartas[1], ganhador[densidade > densidade2]);
+    printf("\nComparação de PIB per Capita entre %s e %s: %s\n\n", cartas[0], cartas[1], ganhador[pibpercapta < pibpercapta2]);
+    printf("Comparação de Super Poder entre %s e %s: %s\n", cartas[0], cartas[1], ganhador[superpoder < superpoder2]);
 
 
     // Sugestão: Defina variáveis separadas para cada atributo da cidade.
