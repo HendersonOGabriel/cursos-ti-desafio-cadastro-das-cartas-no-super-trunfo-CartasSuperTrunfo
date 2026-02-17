@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h> // para transformar string em inteiro
 
 int main()
 {
 
     // Declaração das variáveis para os atributos das cidades
 
-    int populacao, pontosturisticos, populacao2, pontosturisticos2, menu, menu2, atributo;
+    int populacao, pontosturisticos, populacao2, pontosturisticos2, menu, menu2, atributo, atributo2, escolhamultipla1, escolhamultipla2;
     long int pib, pib2, superpoder, superpoder2;
     // mudei o pib, pois o valor do pib é muito grande, e o tipo float não é adequado para armazenar valores tão grandes, pois pode ocorrer perda de precisão. O tipo long int é mais apropriado para armazenar valores inteiros grandes, como o PIB de uma cidade.
     float area, densidade, pibpercapta, area2, densidade2, pibpercapta2;
@@ -106,7 +107,8 @@ int main()
     printf("2. Comparação geral\n");
     printf("3. Comparação detalhada\n");
     printf("4. Comparação super detalhada\n");
-    printf("5. Sair\n");
+    printf("5. Comparação com Múltiplos Atributos\n");
+    printf("6. Sair\n");
     printf("Escolha uma opção: ");
     scanf("%d", &menu2);
 
@@ -243,7 +245,7 @@ int main()
         }
         break;
     case 4:
-    // implementação de sistema de comparação de cartas usando switch case para cada atributo:
+        // implementação de sistema de comparação de cartas usando switch case para cada atributo:
         printf("\n--- Comparação Super Detalhada ---\n");
         printf("Escolha o atributo específico para comparação:\n");
         printf("1 - Países\n");
@@ -260,7 +262,7 @@ int main()
         switch (atributo)
         {
         case 1:
-        // reaproveitei a lógica de comparação geral e comparação detalhada para os atributos, mas adicionei mais detalhes e informações para tornar a comparação mais completa e informativa para o usuário.
+            // reaproveitei a lógica de comparação geral e comparação detalhada para os atributos, mas adicionei mais detalhes e informações para tornar a comparação mais completa e informativa para o usuário.
             printf("Informações das cartas:\n");
             printf("País 1: %s X País 2: %s\n", pais, pais2);
             printf("Estado 1: %s X Estado 2: %s\n", estado, estado2);
@@ -272,7 +274,7 @@ int main()
             printf("Densidade Populacional 1: %.2f hab/km² X Densidade Populacional 2: %.2f hab/km²\n", densidade, densidade2);
             printf("PIB per Capita 1: R$%.2f X PIB per Capita 2: R$%.2f\n", pibpercapta, pibpercapta2);
             printf("Super Poder 1: %.2ld X Super Poder 2: %.2ld\n", superpoder, superpoder2);
-            printf("\n\nApenas para comparação detalhada, não há vencedor direto neste atributo.\n\n");
+            printf("\n\nApenas para comparação detalhada, não há vencedor direto nesta opção.\n\n");
             break;
         case 2:
             if (populacao > populacao2)
@@ -464,6 +466,204 @@ int main()
 
         break;
     case 5:
+
+        printf("\n-- Comparação múltipla --\n");
+        printf("\nEscolha o primeiro atributo: \n");
+        printf("1 - População\n");
+        printf("2 - Pontos Turísticos\n");
+        printf("3 - Área\n");
+        printf("4 - PIB\n");
+        printf("5- Densidade Populacional\n");
+        printf("6 - PIB per Capita\n");
+        printf("Digite o número do atributo escolhido: \n");
+        scanf("%d", &escolhamultipla1);
+
+        printf("\n\n-- Comparação múltipla --\n");
+        printf("\nEscolha o segundo atributo: \n");
+        printf("1 - População\n");
+        printf("2 - Pontos Turísticos\n");
+        printf("3 - Área\n");
+        printf("4 - PIB\n");
+        printf("5 - Densidade Populacional\n");
+        printf("6 - PIB per Capita\n");
+        printf("Digite o número do atributo escolhido: \n");
+        scanf("%d", &escolhamultipla2);
+
+        if (escolhamultipla1 != escolhamultipla2 && (escolhamultipla1 > 0 && escolhamultipla1 <= 6) && (escolhamultipla2 > 0 && escolhamultipla2 <= 6))
+        {
+            // serve para economizar código e gerar as 15 possibilidades de combinações das escolhas:
+            char result;
+            int esc1 = (escolhamultipla1 < escolhamultipla2) ? escolhamultipla1 : escolhamultipla2;
+            int esc2 = (escolhamultipla1 > escolhamultipla2) ? escolhamultipla1 : escolhamultipla2;
+            sprintf(result, "%d%d", esc1, esc2);
+            int result1 = atoi(result);
+
+            switch (result1)
+            {
+            case 12:
+                int soma12a = populacao + pontosturisticos;
+                int soma12b = populacao2 + pontosturisticos2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: População e Pontos Turísticos\n");
+                printf("Valores de População para cada carta : Carta 1 - %d X Carta 2 - %d\n", populacao, populacao2);
+                printf("Valores de Pontos Turísticos para cada carta : Carta 1 - %d X Carta 2 - %d\n", pontosturisticos, pontosturisticos2);
+                printf("Soma dos atributos: Carta 1 - %d X Carta 2 - %d", soma12a, soma12b);
+                (soma12a >= soma12b) ? ((soma12a == soma12b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 13:
+                long double soma13a = ((double)populacao + (double)area);
+                long double soma13b = ((double)populacao2 + (double)area2);
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: População e Área\n");
+                printf("Valores de População para cada carta : Carta 1 - %d X Carta 2 - %d\n", populacao, populacao2);
+                printf("Valores de Área para cada carta : Carta 1 - %d X Carta 2 - %d\n", area, area2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma13a, soma13b);
+                (soma13a >= soma13b) ? ((soma13a == soma13b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 14:
+                int soma14a = populacao + pib;
+                int soma14b = populacao2 + pib2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: População e PIB\n");
+                printf("Valores de População para cada carta : Carta 1 - %d X Carta 2 - %d\n", populacao, populacao2);
+                printf("Valores de PIB para cada carta : Carta 1 - %d X Carta 2 - %d\n", pib, pib2);
+                printf("Soma dos atributos: Carta 1 - %d X Carta 2 - %d", soma14a, soma14b);
+                (soma14a >= soma14b) ? ((soma14a == soma14b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 15:
+                long double soma15a = (double)populacao + (double)(1 / densidade);
+                long double soma15b = (double)populacao2 + (double)(1 / densidade2);
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: População e Densidade Populacional\n");
+                printf("Valores de População para cada carta : Carta 1 - %d X Carta 2 - %d\n", populacao, populacao2);
+                printf("Valores de Densidade Populacional para cada carta : Carta 1 - %d X Carta 2 - %d\n", densidade, densidade2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma15a, soma15b);
+                (soma15a >= soma15b) ? ((soma15a == soma15b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 16:
+                long double soma16a = (double)populacao + (double)pibpercapta;
+                long double soma16b = (double)populacao2 + (double)pibpercapta2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: População e PIB per Capta\n");
+                printf("Valores de População para cada carta : Carta 1 - %d X Carta 2 - %d\n", populacao, populacao2);
+                printf("Valores de PIB per Capta para cada carta : Carta 1 - %d X Carta 2 - %d\n", pibpercapta, pibpercapta2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma16a, soma16b);
+                (soma16a >= soma16b) ? ((soma16a == soma16b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 23:
+                long double soma23a = (double)pontosturisticos + (double)area;
+                long double soma23b = (double)pontosturisticos2 + (double)area2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: Pontos Turísticos e Área\n");
+                printf("Valores de Pontos Turísticos para cada carta : Carta 1 - %d X Carta 2 - %d\n", pontosturisticos, pontosturisticos2);
+                printf("Valores de Área para cada carta : Carta 1 - %d X Carta 2 - %d\n", area, area2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma23a, soma23b);
+                (soma23a >= soma23b) ? ((soma23a == soma23b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 24:
+                int soma24a = pontosturisticos + pib;
+                int soma24b = pontosturisticos2 + pib2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: Pontos Turísticos e PIB\n");
+                printf("Valores de Pontos Turísticos para cada carta : Carta 1 - %d X Carta 2 - %d\n", pontosturisticos, pontosturisticos2);
+                printf("Valores de PIB para cada carta : Carta 1 - %d X Carta 2 - %d\n", pib, pib2);
+                printf("Soma dos atributos: Carta 1 - %d X Carta 2 - %d", soma24a, soma24b);
+                (soma24a >= soma24b) ? ((soma24a == soma24b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 25:
+                long double soma25a = (double)pontosturisticos + (double)(1 / densidade);
+                long double soma25b = (double)pontosturisticos2 + (double)(1 / densidade2);
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: Pontos Turísticos e Densidade Populacional\n");
+                printf("Valores de Pontos Turísticos para cada carta : Carta 1 - %d X Carta 2 - %d\n", pontosturisticos, pontosturisticos2);
+                printf("Valores de Densidade Populacional para cada carta : Carta 1 - %d X Carta 2 - %d\n", densidade, densidade2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma25a, soma25b);
+                (soma25a >= soma25b) ? ((soma25a == soma25b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 26:
+                long double soma26a = (double)pontosturisticos + (double)pibpercapta;
+                long double soma26b = (double)pontosturisticos2 + (double)pibpercapta2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: Pontos Turísticos e PIB per Capta\n");
+                printf("Valores de Pontos Turísticos para cada carta : Carta 1 - %d X Carta 2 - %d\n", pontosturisticos, pontosturisticos2);
+                printf("Valores de PIB per Capta para cada carta : Carta 1 - %d X Carta 2 - %d\n", pibpercapta, pibpercapta2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma26a, soma26b);
+                (soma26a >= soma26b) ? ((soma26a == soma26b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 34:
+                long double soma34a = (double)area + (double)pib;
+                long double soma34b = (double)area2 + (double)pib2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: Área e PIB\n");
+                printf("Valores de Área para cada carta : Carta 1 - %d X Carta 2 - %d\n", area, area2);
+                printf("Valores de PIB para cada carta : Carta 1 - %d X Carta 2 - %d\n", pib, pib2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma34a, soma34b);
+                (soma34a >= soma34b) ? ((soma34a == soma34b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 35:
+                long double soma35a = (double)area + (double)(1 / densidade);
+                long double soma35b = (double)area2 + (double)(1 / densidade2);
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: Área e Densidade Populacional\n");
+                printf("Valores de Área para cada carta : Carta 1 - %d X Carta 2 - %d\n", area, area2);
+                printf("Valores de Densidade Populacional para cada carta : Carta 1 - %d X Carta 2 - %d\n", densidade, densidade2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma35a, soma35b);
+                (soma35a >= soma35b) ? ((soma35a == soma35b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 36:
+                long double soma36a = (double)area + (double)pibpercapta;
+                long double soma36b = (double)area2 + (double)pibpercapta2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: Área e PIB per Capta\n");
+                printf("Valores de Área para cada carta : Carta 1 - %d X Carta 2 - %d\n", area, area2);
+                printf("Valores de PIB per Capta para cada carta : Carta 1 - %d X Carta 2 - %d\n", pibpercapta, pibpercapta2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma36a, soma36b);
+                (soma36a >= soma36b) ? ((soma36a == soma36b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 45:
+                long double soma45a = (double)pib + (double)(1 / densidade);
+                long double soma45b = (double)pib2 + (double)(1 / densidade2);
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: PIB e Densidade Populacional\n");
+                printf("Valores de PIB para cada carta : Carta 1 - %d X Carta 2 - %d\n", pib, pib2);
+                printf("Valores de Densidade Populacional para cada carta : Carta 1 - %d X Carta 2 - %d\n", densidade, densidade2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma45a, soma45b);
+                (soma45a >= soma45b) ? ((soma45a == soma45b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 46:
+                long double soma46a = (double)pib + (double)pibpercapta;
+                long double soma46b = (double)pib2 + (double)pibpercapta2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: PIB e PIB per Capta\n");
+                printf("Valores de PIB para cada carta : Carta 1 - %d X Carta 2 - %d\n", pib, pib2);
+                printf("Valores de PIB per Capta para cada carta : Carta 1 - %d X Carta 2 - %d\n", pibpercapta, pibpercapta2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma46a, soma46b);
+                (soma46a >= soma46b) ? ((soma46a == soma46b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            case 56:
+                long double soma56a = (double)(1 / densidade) + (double)pibpercapta;
+                long double soma56b = (double)(1 / densidade2) + (double)pibpercapta2;
+                printf("\nPais 1 - %s X País 2 - %s\n", pais, pais2);
+                printf("Atributos escolhidos: Densidade Populacional e PIB per Capta\n");
+                printf("Valores de Densidade Populacional para cada carta : Carta 1 - %d X Carta 2 - %d\n", densidade, densidade2);
+                printf("Valores de PIB per Capta para cada carta : Carta 1 - %d X Carta 2 - %d\n", pibpercapta, pibpercapta2);
+                printf("Soma dos atributos: Carta 1 - %.2Lf X Carta 2 - %.2Lf", soma56a, soma56b);
+                (soma56a >= soma56b) ? ((soma56a == soma56b) ? printf("Empate técnico!\n") : printf("Carta 1 venceu!\n")) : printf("Carta 2 venceu!\n");
+                break;
+            default:
+                printf("\nEsolha um número inteiro!\n");
+                return 1; // usuário escolheu número flutuante
+                break;
+            }
+        }
+        else
+        {
+            printf("\nEscolha uma opção diferente da primeira ou um número válido!\n");
+            return 1; // encerra o programa com erro, pois o usuário escolheu um número fora do escopo
+        }
+
+        break;
+    case 6:
         printf("\nSaindo do jogo. Obrigado por jogar!\n");
         break;
     default:
